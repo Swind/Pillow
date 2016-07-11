@@ -392,8 +392,9 @@ void *_dfunc(void *lib_handle, const char *func_name)
      */
 
     /* Reset errors. */
+    void *func = NULL;
     dlerror();
-    void *func = dlsym(lib_handle, func_name);
+    func = dlsym(lib_handle, func_name);
     if (func == NULL) {
         const char *error = dlerror();
         PyErr_SetString(PyExc_RuntimeError, error);
